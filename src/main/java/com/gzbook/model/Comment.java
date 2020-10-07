@@ -20,17 +20,17 @@ public class Comment {
 
     private Date time;
 
-    private int like;
+    private int likeCount;
 
     public Comment() {
     }
 
-    public Comment(Long id, Status status, User user, Date time, int like) {
+    public Comment(Long id, Status status, User user, Date time, int likeCount) {
         this.id = id;
         this.status = status;
         this.user = user;
         this.time = time;
-        this.like = like;
+        this.likeCount = likeCount;
     }
 
     public Long getId() {
@@ -66,10 +66,10 @@ public class Comment {
     }
 
     public int getLike() {
-        return like;
+        return likeCount;
     }
 
     public void setLike(int like) {
-        this.like = like;
+        this.likeCount = like;
     }
 }
