@@ -6,24 +6,20 @@ import javax.persistence.*;
 @Table(name = "contacts")
 public class Contact {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "friend_id")
-    private User friend;
+    private Long userId;
+    private Long friendId;
+//    @ManyToOne
+//    @JoinColumn(name = "status_id")
+//    private Status status;
 
     public Contact() {
     }
+    public Contact(Long relatingUserId,Long relatedUserId ) {
 
-    public Contact(Long id, User user, User friend) {
-        this.id = id;
-        this.user = user;
-        this.friend = friend;
+        this.userId = relatingUserId;
+        this.friendId = relatedUserId;
     }
 
     public Long getId() {
@@ -34,19 +30,19 @@ public class Contact {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public User getFriend() {
-        return friend;
+    public Long getFriendId() {
+        return friendId;
     }
 
-    public void setFriend(User friend) {
-        this.friend = friend;
+    public void setFriendId(Long friendId) {
+        this.friendId = friendId;
     }
 }

@@ -1,12 +1,13 @@
 package com.gzbook.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "comments")
 public class Comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -17,15 +18,20 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private Date time;
+
+    private int like;
+
     public Comment() {
     }
 
-    public Comment(Long id, Status status, User user) {
+    public Comment(Long id, Status status, User user, Date time, int like) {
         this.id = id;
         this.status = status;
         this.user = user;
+        this.time = time;
+        this.like = like;
     }
-
 
     public Long getId() {
         return id;
@@ -49,5 +55,21 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
     }
 }
