@@ -21,7 +21,7 @@ public class Status {
 //    @OneToMany(targetEntity = Contact.class)
 //    private List<Contact> contacts;
 
-    private Date time;
+    private Date createdTime;
 
     private int likeCount;
 
@@ -58,11 +58,11 @@ public class Status {
     }
 
     public Date getTime() {
-        return time;
+        return createdTime;
     }
 
     public void setTime(Date time) {
-        this.time = time;
+        this.createdTime = time;
     }
 
     public int getLikeCount() {

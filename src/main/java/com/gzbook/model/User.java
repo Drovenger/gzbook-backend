@@ -14,44 +14,42 @@ public class User {
 
     private String userName;
 
-    private String userEmail;
+    private String email;
 
-    private String userPassword;
+    private String password;
 
-    private String gender;
+    private int gender;
 
     private String dateOfBirth;
 
-    private String userAddress;
+    private String address;
 
-    private String userPhoneNumber;
+    private String phoneNumber;
 
-    private String userAvatar;
+    private String avatarUrl;
 
-    private String userCoverPhoto;
+    private String coverPhotoUrl;
 
     public User() {
     }
 
-    public User(Long id, String userName, String userEmail, String userPassword, String gender, String dateOfBirth, String userAddress, String userPhoneNumber, String userAvatar, String userCoverPhoto) {
+    public User(Long id, String userName, String email, String password, int gender, String dateOfBirth, String address, String phoneNumber, String avatarUrl, String coverPhotoUrl) {
         this.id = id;
         this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
+        this.email = email;
+        this.password = password;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-        this.userAddress = userAddress;
-        this.userPhoneNumber = userPhoneNumber;
-        this.userAvatar = userAvatar;
-        this.userCoverPhoto = userCoverPhoto;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.avatarUrl = avatarUrl;
+        this.coverPhotoUrl = coverPhotoUrl;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public User(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
     }
 
     public String getUserName() {
@@ -62,27 +60,35 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getGender() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -94,35 +100,35 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userPhoneNumber = userPhoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getUserAvatar() {
-        return userAvatar;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setUserAvatar(String userAvatar) {
-        this.userAvatar = userAvatar;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
-    public String getUserCoverPhoto() {
-        return userCoverPhoto;
+    public String getCoverPhotoUrl() {
+        return coverPhotoUrl;
     }
 
-    public void setUserCoverPhoto(String userCoverPhoto) {
-        this.userCoverPhoto = userCoverPhoto;
+    public void setCoverPhotoUrl(String coverPhotoUrl) {
+        this.coverPhotoUrl = coverPhotoUrl;
     }
 }
