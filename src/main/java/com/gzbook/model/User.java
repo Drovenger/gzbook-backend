@@ -1,9 +1,6 @@
 package com.gzbook.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -14,36 +11,36 @@ public class User {
 
     private String userName;
 
-    private String userEmail;
+    private String email;
 
-    private String userPassword;
+    private String password;
 
     private String gender;
 
     private String dateOfBirth;
 
-    private String userAddress;
+    private String address;
 
-    private String userPhoneNumber;
+    private String phoneNumber;
 
-    private String userAvatar;
+    private String avatar;
 
-    private String userCoverPhoto;
+    private String coverPhoto;
 
     public User() {
     }
 
-    public User(Long id, String userName, String userEmail, String userPassword, String gender, String dateOfBirth, String userAddress, String userPhoneNumber, String userAvatar, String userCoverPhoto) {
+    public User(Long id, String userName, String email, String password, String gender, String dateOfBirth, String userAddress, String userPhoneNumber, String userAvatar, String userCoverPhoto) {
         this.id = id;
         this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
+        this.email = email;
+        this.password = password;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-        this.userAddress = userAddress;
-        this.userPhoneNumber = userPhoneNumber;
-        this.userAvatar = userAvatar;
-        this.userCoverPhoto = userCoverPhoto;
+        this.address = userAddress;
+        this.phoneNumber = userPhoneNumber;
+        this.avatar = userAvatar;
+        this.coverPhoto = userCoverPhoto;
     }
 
     public Long getId() {
@@ -62,20 +59,20 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String userEmail) {
+        this.email = userEmail;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String userPassword) {
+        this.password = userPassword;
     }
 
     public String getGender() {
@@ -94,35 +91,35 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setAddress(String userAddress) {
+        this.address = userAddress;
     }
 
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userPhoneNumber = userPhoneNumber;
+    public void setPhoneNumber(String userPhoneNumber) {
+        this.phoneNumber = userPhoneNumber;
     }
 
-    public String getUserAvatar() {
-        return userAvatar;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUserAvatar(String userAvatar) {
-        this.userAvatar = userAvatar;
+    public void setAvatar(String userAvatar) {
+        this.avatar = userAvatar;
     }
 
-    public String getUserCoverPhoto() {
-        return userCoverPhoto;
+    public String getCoverPhoto() {
+        return coverPhoto;
     }
 
-    public void setUserCoverPhoto(String userCoverPhoto) {
-        this.userCoverPhoto = userCoverPhoto;
+    public void setCoverPhoto(String userCoverPhoto) {
+        this.coverPhoto = userCoverPhoto;
     }
 }
