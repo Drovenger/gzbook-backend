@@ -23,9 +23,9 @@ public class User {
 
     private String phoneNumber;
 
-    private String avatar;
+    private String avatarUrl;
 
-    private String coverPhoto;
+    private String coverPhotoUrl;
 
     public User() {
     }
@@ -39,8 +39,8 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.address = userAddress;
         this.phoneNumber = userPhoneNumber;
-        this.avatar = userAvatar;
-        this.coverPhoto = userCoverPhoto;
+        this.avatarUrl = userAvatar;
+        this.coverPhotoUrl = userCoverPhoto;
     }
 
     public Long getId() {
@@ -107,19 +107,19 @@ public class User {
         this.phoneNumber = userPhoneNumber;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAvatar(String userAvatar) {
-        this.avatar = userAvatar;
+    public void setAvatarUrl(String userAvatar) {
+        this.avatarUrl = userAvatar;
     }
 
-    public String getCoverPhoto() {
-        return coverPhoto;
+    public String getCoverPhotoUrl() {
+        return coverPhotoUrl;
     }
 
-    public void setCoverPhoto(String userCoverPhoto) {
-        this.coverPhoto = userCoverPhoto;
+    public void setCoverPhotoUrl(String userCoverPhoto) {
+        this.coverPhotoUrl = userCoverPhoto;
     }
 }
