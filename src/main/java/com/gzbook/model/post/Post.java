@@ -1,4 +1,4 @@
-package com.gzbook.model;
+package com.gzbook.model.post;
 
 import javax.persistence.*;
 import java.util.Date;

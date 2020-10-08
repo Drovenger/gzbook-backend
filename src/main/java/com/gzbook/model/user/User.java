@@ -1,4 +1,4 @@
-package com.gzbook.model;
+package com.gzbook.model.user;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userName;
+    private String username;
 
     private String email;
 
@@ -30,9 +30,15 @@ public class User {
     public User() {
     }
 
+    public User(String userName, String email, String password) {
+        this.username = userName;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(Long id, String userName, String email, String password, String gender, String dateOfBirth, String userAddress, String userPhoneNumber, String userAvatar, String userCoverPhoto) {
         this.id = id;
-        this.userName = userName;
+        this.username = userName;
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -51,12 +57,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {

@@ -1,10 +1,8 @@
-package com.gzbook.model;
+package com.gzbook.model.friend;
+
+import com.gzbook.model.friend.Relationship;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.List;
 
 @Entity
