@@ -31,7 +31,7 @@ public class LoginSignupController {
 //    @Autowired
 //    PasswordEncoder passwordEncoder;
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
