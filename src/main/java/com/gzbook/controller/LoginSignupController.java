@@ -19,8 +19,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/api/auth")
 public class LoginSignupController {
+
     @Autowired
     IUserRepository userRepository;
 
