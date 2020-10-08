@@ -13,24 +13,11 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String content;
-
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
-//    @OneToMany(targetEntity = Contact.class)
-//    private List<Contact> contacts;
-
-    private Date time;
-
-    private int likeCount;
+    private String name;
+    @OneToMany(targetEntity = Relationship.class)
+    private List<Relationship> relationships;
 
     public Status() {
-    }
-
-    public Status(Long id, String content) {
-        this.id = id;
-        this.content = content;
     }
 
     public Long getId() {
@@ -41,35 +28,19 @@ public class Status {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getName() {
+        return name;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public User getUser() {
-        return user;
+    public List<Relationship> getRelationships() {
+        return relationships;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public int getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
+    public void setRelationships(List<Relationship> relationships) {
+        this.relationships = relationships;
     }
 }

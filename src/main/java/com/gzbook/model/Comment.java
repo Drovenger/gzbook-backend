@@ -1,7 +1,6 @@
 package com.gzbook.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "comments")
@@ -10,66 +9,95 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
-    private Status status;
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long postId;
 
-    private Date time;
+    private String content;
 
-    private int likeCount;
+    private int commentLike;
+
+    private int commentDislike;
+
+    private String commentTime;
+
+    private int edited;
 
     public Comment() {
     }
 
-    public Comment(Long id, Status status, User user, Date time, int likeCount) {
-        this.id = id;
-        this.status = status;
-        this.user = user;
-        this.time = time;
-        this.likeCount = likeCount;
+    public Comment(Long commentId, Long commenterId, Long postId, String content, int commentLike, int commentDislike, String commentTime, int edited) {
+        this.id = commentId;
+        this.userId = commenterId;
+        this.postId = postId;
+        this.content = content;
+        this.commentLike = commentLike;
+        this.commentDislike = commentDislike;
+        this.commentTime = commentTime;
+        this.edited = edited;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long commentId) {
+        this.id = commentId;
     }
 
-    public Status getStatus() {
-        return status;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setUserId(Long commenterId) {
+        this.userId = commenterId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getPostId() {
+        return postId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
-    public Date getTime() {
-        return time;
+    public String getContent() {
+        return content;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public int getLike() {
-        return likeCount;
+    public int getCommentLike() {
+        return commentLike;
     }
 
-    public void setLike(int like) {
-        this.likeCount = like;
+    public void setCommentLike(int commentLike) {
+        this.commentLike = commentLike;
+    }
+
+    public int getCommentDislike() {
+        return commentDislike;
+    }
+
+    public void setCommentDislike(int commentDislike) {
+        this.commentDislike = commentDislike;
+    }
+
+    public String getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(String commentTime) {
+        this.commentTime = commentTime;
+    }
+
+    public int getEdited() {
+        return edited;
+    }
+
+    public void setEdited(int edited) {
+        this.edited = edited;
     }
 }
