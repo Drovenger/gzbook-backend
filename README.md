@@ -1,7 +1,7 @@
 "# gzbook-backend" 
 Đông
 Api đăng ký
-http://localhost:8080/api/auth/signup
+http://localhost:8080/api/auth/register
 {
     "username":"admin123",
     "gender":"men",
