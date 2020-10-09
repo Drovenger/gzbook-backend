@@ -1,4 +1,4 @@
-package com.gzbook.model;
+package com.gzbook.model.user;
 
 public enum ERole {
     ROLE_USER,

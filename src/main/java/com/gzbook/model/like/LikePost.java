@@ -1,24 +1,24 @@
-package com.gzbook.model;
+package com.gzbook.model.like;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "likecomment")
-public class LikeComment {
+@Table(name = "likepost")
+public class LikePost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long commentId;
+    private Long postId;
 
     private Long likerId;
 
-    public LikeComment() {
+    public LikePost() {
     }
 
-    public LikeComment(Long id, Long commentId, Long likerId) {
+    public LikePost(Long id,Long postId, Long likerId) {
         this.id = id;
-        this.commentId = commentId;
+        this.postId = postId;
         this.likerId = likerId;
     }
 
@@ -30,12 +30,12 @@ public class LikeComment {
         this.id = id;
     }
 
-    public Long getCommentId() {
-        return commentId;
+    public Long getPostId() {
+        return postId;
     }
 
-    public void setCommentId(Long commenterId) {
-        this.commentId = commenterId;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
     public Long getLikerId() {

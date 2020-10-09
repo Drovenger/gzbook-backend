@@ -1,4 +1,6 @@
-package com.gzbook.model;
+package com.gzbook.model.user;
+
+import com.gzbook.model.user.ERole;
 
 import javax.persistence.*;
 
