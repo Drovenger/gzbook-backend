@@ -1,4 +1,4 @@
-package com.gzbook.service.user.refreshtoken;
+package com.gzbook.service.refreshtoken;
 
 import com.gzbook.exception.AppException;
 import com.gzbook.model.RefreshToken;
