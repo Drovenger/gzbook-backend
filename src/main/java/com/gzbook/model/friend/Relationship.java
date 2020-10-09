@@ -1,4 +1,4 @@
-package com.gzbook.model;
+package com.gzbook.model.friend;
 
 import javax.persistence.*;
 

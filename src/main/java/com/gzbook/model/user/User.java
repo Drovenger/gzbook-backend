@@ -1,6 +1,8 @@
-package com.gzbook.model;
+package com.gzbook.model.user;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -9,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userName;
+    private String username;
 
     private String email;
 
@@ -27,20 +29,35 @@ public class User {
 
     private String coverPhotoUrl;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+
     public User() {
     }
 
-    public User(Long id, String userName, String email, String password, String gender, String dateOfBirth, String userAddress, String userPhoneNumber, String userAvatar, String userCoverPhoto) {
+    public User(String username, String email, String password, String gender) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+    }
+
+    public User(Long id, String username, String email, String password, String gender, String dateOfBirth, String address, String phoneNumber, String avatarUrl, String coverPhotoUrl, Set<Role> roles) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-        this.address = userAddress;
-        this.phoneNumber = userPhoneNumber;
-        this.avatarUrl = userAvatar;
-        this.coverPhotoUrl = userCoverPhoto;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.avatarUrl = avatarUrl;
+        this.coverPhotoUrl = coverPhotoUrl;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -51,12 +68,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {
@@ -121,5 +138,14 @@ public class User {
 
     public void setCoverPhotoUrl(String userCoverPhoto) {
         this.coverPhotoUrl = userCoverPhoto;
+    }
+
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

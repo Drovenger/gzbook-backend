@@ -1,4 +1,4 @@
-package com.gzbook.model;
+package com.gzbook.model.comment;
 
 import javax.persistence.*;
 
