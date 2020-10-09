@@ -21,7 +21,7 @@ public class UserService implements IUserService{
     @Override
     public User saveUser(User user) {
         userRepository.save(user);
-        return userRepository.findById(user.getId()).get();
+        return user;
     }
 
     @Override
