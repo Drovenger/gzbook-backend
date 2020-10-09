@@ -26,7 +26,7 @@ public class FriendController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Iterable<Relationshigp>> search() {
+    public ResponseEntity<Iterable<Relationship>> search() {
         return new ResponseEntity<Iterable<Relationship>>(relationshipService.findAll(), HttpStatus.OK);
     }
 }
