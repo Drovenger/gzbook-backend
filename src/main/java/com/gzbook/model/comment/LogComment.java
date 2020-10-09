@@ -1,6 +1,7 @@
 package com.gzbook.model.comment;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "LogComment")
