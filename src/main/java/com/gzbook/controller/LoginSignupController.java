@@ -12,7 +12,7 @@ import com.gzbook.model.user.User;
 import com.gzbook.repository.IRoleRepository;
 import com.gzbook.repository.IUserRepository;
 import com.gzbook.service.user.UserDetailsImpl;
-import com.gzbook.service.user.refreshtoken.RefreshTokenService;
+import com.gzbook.service.refreshtoken.RefreshTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

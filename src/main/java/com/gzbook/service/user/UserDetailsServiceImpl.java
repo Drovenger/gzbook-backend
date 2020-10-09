@@ -2,6 +2,7 @@ package com.gzbook.service.user;
 
 import com.gzbook.model.user.User;
 import com.gzbook.repository.IUserRepository;
+import com.gzbook.service.user.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
