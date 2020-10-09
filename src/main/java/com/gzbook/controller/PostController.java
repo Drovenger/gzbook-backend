@@ -33,6 +33,12 @@ public class PostController {
         return new ResponseEntity<>(postService.findPostById(id), HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
+        postService.savePost(post);
+        return new ResponseEntity<>(new HttpHeaders(), HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<User> deletePost(@RequestBody Post post, @PathVariable Long id) {
         postService.savePost(post);
