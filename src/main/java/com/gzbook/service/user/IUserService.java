@@ -1,7 +1,7 @@
 package com.gzbook.service.user;
 
 
-import com.gzbook.model.User;
+import com.gzbook.model.user.User;
 
 import java.util.Optional;
 

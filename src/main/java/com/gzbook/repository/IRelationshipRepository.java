@@ -1,7 +1,8 @@
 package com.gzbook.repository;
 
-import com.gzbook.model.Relationship;
-import com.gzbook.model.Status;
+
+import com.gzbook.model.friend.Relationship;
+import com.gzbook.model.friend.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

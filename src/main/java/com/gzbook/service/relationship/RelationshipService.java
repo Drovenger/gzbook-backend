@@ -1,7 +1,7 @@
 package com.gzbook.service.relationship;
 
-import com.gzbook.model.Relationship;
-import com.gzbook.model.Status;
+import com.gzbook.model.friend.Relationship;
+import com.gzbook.model.friend.Status;
 import com.gzbook.repository.IRelationshipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

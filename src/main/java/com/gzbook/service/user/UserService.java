@@ -1,6 +1,6 @@
 package com.gzbook.service.user;
 
-import com.gzbook.model.User;
+import com.gzbook.model.user.User;
 import com.gzbook.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,12 +41,12 @@ public class UserService implements IUserService{
 
     @Override
     public Iterable<User> findUserByName(String input) {
-        return userRepository.findUsersByUserNameContaining(input);
+        return userRepository.findUsersByUsernameContaining(input);
     }
 
     @Override
     public Optional<User> findByUserName(String userName) {
-        return userRepository.findByUserName(userName);
+        return userRepository.findByUsername(userName);
     }
 
     @Override

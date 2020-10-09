@@ -1,8 +1,8 @@
 package com.gzbook.service.relationship;
 
 
-import com.gzbook.model.Relationship;
-import com.gzbook.model.Status;
+import com.gzbook.model.friend.Relationship;
+import com.gzbook.model.friend.Status;
 
 public interface IRelationshipService {
     Relationship saveRelationship(Relationship relationship);

@@ -1,7 +1,7 @@
 package com.gzbook.service.status;
 
 
-import com.gzbook.model.Status;
+import com.gzbook.model.friend.Status;
 
 public interface IStatusService {
     Status saveStatus(Status status);

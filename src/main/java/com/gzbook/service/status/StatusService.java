@@ -1,6 +1,6 @@
 package com.gzbook.service.status;
 
-import com.gzbook.model.Status;
+import com.gzbook.model.friend.Status;
 import com.gzbook.repository.IStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

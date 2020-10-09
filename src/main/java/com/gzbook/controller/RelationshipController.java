@@ -1,8 +1,8 @@
 package com.gzbook.controller;
 
-import com.gzbook.model.Relationship;
-import com.gzbook.model.Status;
-import com.gzbook.model.User;
+import com.gzbook.model.friend.Relationship;
+import com.gzbook.model.friend.Status;
+import com.gzbook.model.user.User;
 import com.gzbook.service.relationship.IRelationshipService;
 import com.gzbook.service.status.IStatusService;
 import com.gzbook.service.user.IUserService;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/relationship")
-public class RelatioshipController {
+public class RelationshipController {
     @Autowired
     private IRelationshipService relationshipService;
     @Autowired
