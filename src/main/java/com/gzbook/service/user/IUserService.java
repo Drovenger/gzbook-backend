@@ -14,11 +14,11 @@ public interface IUserService {
 
     User findUserById(Long id);
 
-//    User findUserByEmail(String email);
+    User findUserByEmail(String email);
 
-//    Iterable<User> findUserByName(String input);
-//
-//    Optional<User> findByUserName(String userName);
-//
-//    boolean emailExist(String email);
+    Iterable<User> findUserByName(String input);
+
+    Optional<User> findByUsername(String username);
+
+    boolean emailExist(String email);
 }

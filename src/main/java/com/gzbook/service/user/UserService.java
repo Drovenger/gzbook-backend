@@ -34,4 +34,24 @@ public class UserService implements IUserService{
         return userRepository.findById(id).get();
     }
 
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public Iterable<User> findUserByName(String input) {
+        return userRepository.findUsersByUsernameContaining(input);
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public boolean emailExist(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
 }
