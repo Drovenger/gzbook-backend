@@ -8,4 +8,10 @@ public interface IPostService {
     Post savePost(Post post);
 
     void deletePost(Long id);
+
+    Iterable<Post> findAllPost();
+
+    Iterable<Post> findPostByUserId(Long userId);
+
+    Iterable<Post> findByUserIdAndTextPostContains(Long id, String textPost);
 }

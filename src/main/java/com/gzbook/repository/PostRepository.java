@@ -6,4 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
+    Iterable<Post> findByUserId(Long userId);
+
+    Iterable<Post> findByUserIdAndTextPostContains(Long id,String textPost);
+
+
 }
