@@ -31,4 +31,9 @@ public class PostService implements IPostService {
     public Iterable<Post> findAllPost() {
         return postRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
+
+    @Override
+    public Iterable<Post> findPostByPosterId(Long id) {
+        return postRepository.findByUserId(id);
+    }
 }

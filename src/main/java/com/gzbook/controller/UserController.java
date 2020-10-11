@@ -7,10 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -23,6 +20,11 @@ public class UserController {
     @Autowired
     PasswordEncoder encoder;
 
+    @GetMapping("/")
+    public ResponseEntity<Iterable<User>> findAll() {
+        return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
         System.out.println("Creating User " + user.getUsername());
@@ -32,6 +34,53 @@ public class UserController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        user.setId(id);
+        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+    }
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("findUserById/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("findUserByEmail/{email}")
+    public ResponseEntity<User> findByName(@PathVariable String email) {
+        return new ResponseEntity<>(userService.findUserByEmail(email), HttpStatus.OK);
+    }
+
+    @GetMapping("findUserByName/{name}")
+    public ResponseEntity<Iterable<User>> findByNameContains(@PathVariable String name) {
+        return new ResponseEntity<>(userService.findUserByName(name), HttpStatus.OK);
+    }
+
+    @PostMapping("/combinePassword/{id}")
+    public ResponseEntity<HttpStatus> combinePassword(@PathVariable Long id, @RequestBody String password) {
+        User user = this.userService.findUserById(id);
+        if (encoder.matches(password, user.getPassword())) {
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @PostMapping("/changePassword/{id}")
+    public ResponseEntity<String> changePassword(@PathVariable Long id, @RequestBody String newPassword) {
+        User user = this.userService.findUserById(id);
+        user.setPassword(encoder.encode(newPassword));
+        this.userService.saveUser(user);
+        return new ResponseEntity<>("Password changed", HttpStatus.OK);
+    }
+
+    @PostMapping("/exists")
+    public ResponseEntity<Boolean> checkUserExist(@RequestBody String email) {
+        return new ResponseEntity<>(userService.emailExist(email), HttpStatus.OK);
+    }
 
 }

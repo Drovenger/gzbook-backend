@@ -29,8 +29,10 @@ public class User {
 
     private String coverPhotoUrl;
 
+    private String about;
+
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
@@ -58,6 +60,29 @@ public class User {
         this.avatarUrl = avatarUrl;
         this.coverPhotoUrl = coverPhotoUrl;
         this.roles = roles;
+    }
+
+    public User(Long id, String username, String email, String password, String gender, String dateOfBirth, String address, String phoneNumber, String avatarUrl, String coverPhotoUrl, String about, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.avatarUrl = avatarUrl;
+        this.coverPhotoUrl = coverPhotoUrl;
+        this.about = about;
+        this.roles = roles;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 
     public Long getId() {

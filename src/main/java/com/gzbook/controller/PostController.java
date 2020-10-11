@@ -50,6 +50,11 @@ public class PostController {
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
+    @GetMapping("findPostByPosterId/{posterId}")
+    public ResponseEntity<Iterable<Post>> findPostByPosterId(@PathVariable Long posterId) {
+        return new ResponseEntity<>(postService.findPostByPosterId(posterId), HttpStatus.OK);
+    }
+
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");

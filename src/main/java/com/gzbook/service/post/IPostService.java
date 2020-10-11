@@ -10,4 +10,6 @@ public interface IPostService {
     void deletePost(Long id);
 
     Iterable<Post> findAllPost();
+
+    Iterable<Post> findPostByPosterId(Long userId);
 }
