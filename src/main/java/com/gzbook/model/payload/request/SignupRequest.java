@@ -26,6 +26,17 @@ public class SignupRequest {
     @Size(min = 6, max = 20)
     private String password;
 
+    public SignupRequest() {
+    }
+
+    public SignupRequest(@NotBlank @Size(min = 2, max = 20) String username, @NotBlank @Size(max = 20) String gender, @NotBlank @Size(max = 50) String email, Set<String> role, @NotBlank @Size(min = 6, max = 20) String password) {
+        this.username = username;
+        this.gender = gender;
+        this.email = email;
+        this.role = role;
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
