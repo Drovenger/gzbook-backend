@@ -31,18 +31,18 @@ public class Post {
     public Post() {
     }
 
-    public Post(Long postId, Long posterId, String textPost, int postLike, int postDislike, Long status){
+    public Post(Long postId, Long userID, String textPost, int postLike, int postDislike, Long status){
         this.id = postId;
-        this.userId = posterId;
+        this.userId = userID;
         this.textPost = textPost;
         this.postLike = postLike;
         this.postDislike = postDislike;
         this.status = status;
     }
 
-    public Post(Long postId, Long posterId, String textPost, String imagePost, String videoPost, String linkPost, Date createdTime, int postLike, int postDislike,Long status) {
+    public Post(Long postId, Long userId, String textPost, String imagePost, String videoPost, String linkPost, Date createdTime, int postLike, int postDislike,Long status) {
         this.id = postId;
-        this.userId = posterId;
+        this.userId = userId;
         this.textPost = textPost;
         this.imageUrl = imagePost;
         this.videoUrl = videoPost;
