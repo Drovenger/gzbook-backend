@@ -21,10 +21,14 @@ public class PostController {
     @Autowired
     private IPostService postService;
 
+    @GetMapping("/")
+    public ResponseEntity<Iterable<Post>> findAllPost() {
+        return new ResponseEntity<>(postService.findAllPost(), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Post> createPost(@RequestBody Post post) throws ParseException {
-        Date date = new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(timeConvert());
-        post.setCreatedTime(date);
+        post.setCreatedTime(timeConvert());
         return new ResponseEntity<>(postService.savePost(post), HttpStatus.CREATED);
     }
 

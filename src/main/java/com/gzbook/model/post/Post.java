@@ -20,7 +20,7 @@ public class Post {
 
     private String linkPost;
 
-    private Date createdTime;
+    private String createdTime;
 
     private Long status;
 
@@ -40,7 +40,7 @@ public class Post {
         this.status = status;
     }
 
-    public Post(Long postId, Long userId, String textPost, String imagePost, String videoPost, String linkPost, Date createdTime, int postLike, int postDislike,Long status) {
+    public Post(Long postId, Long userId, String textPost, String imagePost, String videoPost, String linkPost, String createdTime, int postLike, int postDislike,Long status) {
         this.id = postId;
         this.userId = userId;
         this.textPost = textPost;
@@ -109,11 +109,11 @@ public class Post {
         this.linkPost = linkPost;
     }
 
-    public Date getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 

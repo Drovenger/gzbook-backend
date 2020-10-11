@@ -8,4 +8,6 @@ public interface IPostService {
     Post savePost(Post post);
 
     void deletePost(Long id);
+
+    Iterable<Post> findAllPost();
 }
