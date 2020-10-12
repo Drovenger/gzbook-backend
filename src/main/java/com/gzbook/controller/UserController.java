@@ -24,41 +24,42 @@ public class UserController {
     public ResponseEntity<Iterable<User>> findAll() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }
-
-    @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating User " + user.getUsername());
-        userService.saveUser(user);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
-    }
+//
+//    @PostMapping("/create")
+//    public ResponseEntity<User> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+//        System.out.println("Creating User " + user.getUsername());
+//        userService.saveUser(user);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+//        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+//    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         user.setId(id);
+        user.setPassword(encoder.encode(user.getPassword()));
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("findUserById/{id}")
+    @GetMapping("/findUserById/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
     }
 
-    @GetMapping("findUserByEmail")
+    @GetMapping("/findUserByEmail")
     public ResponseEntity<User> findByEmail(@RequestParam("email") String email) {
         User user = userService.findUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("findUserByName/{name}")
-    public ResponseEntity<Iterable<User>> findByNameContains(@PathVariable String name) {
+    @GetMapping("/findUserByName")
+    public ResponseEntity<Iterable<User>> findByNameContains(@RequestParam("name") String name) {
         return new ResponseEntity<>(userService.findUserByName(name), HttpStatus.OK);
     }
 
