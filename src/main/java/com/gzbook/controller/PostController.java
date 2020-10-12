@@ -53,14 +53,19 @@ public class PostController {
         return new ResponseEntity<>(postService.findAllByUserId(userId), HttpStatus.OK);
     }
 
-    @GetMapping("status/{status}")
-    public ResponseEntity<Iterable<Post>> findAllByStatus(@PathVariable Integer status) {
+    @PostMapping("status/{status}")
+    public ResponseEntity<Iterable<Post>> findAllByStatus(@PathVariable Long status) {
         return new ResponseEntity<>(postService.findAllByStatus(status), HttpStatus.OK);
     }
 
-    @GetMapping("userAndStatus/{userId}/{status}")
+    @PostMapping("userAndStatus/{userId}/{status}")
     public ResponseEntity<Iterable<Post>> findAllByUserIdAndStatus(@PathVariable Long userId,@PathVariable Integer status) {
         return new ResponseEntity<>(postService.findAllByUserIdAndStatus(userId, status), HttpStatus.OK);
+    }
+
+    @PostMapping("statusIn/{status}")
+    public ResponseEntity<Iterable<Post>> findAllByStatusIn(@PathVariable long[] status) {
+        return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
     @GetMapping()
