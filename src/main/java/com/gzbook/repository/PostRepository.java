@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-    Iterable<Post> findByUserId(Long id);
+    Iterable<Post> findAllByUserId(Long id);
+    Iterable<Post> findAllByStatus(int status);
+    Iterable<Post> findAllByUserIdAndStatus(long id, int status);
 }
