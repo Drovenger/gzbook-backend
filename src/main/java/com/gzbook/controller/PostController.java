@@ -10,10 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @RestController
 @RequestMapping(value = "/post")
@@ -44,20 +42,37 @@ public class PostController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<User> deletePost(@RequestBody Post post, @PathVariable Long id) {
-        postService.savePost(post);
+    public ResponseEntity<User> deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
-    @GetMapping("findPostByPosterId/{posterId}")
-    public ResponseEntity<Iterable<Post>> findPostByPosterId(@PathVariable Long posterId) {
-        return new ResponseEntity<>(postService.findPostByPosterId(posterId), HttpStatus.OK);
+    @GetMapping("user/{userId}")
+    public ResponseEntity<Iterable<Post>> findAllByUserId(@PathVariable Long userId) {
+        return new ResponseEntity<>(postService.findAllByUserId(userId), HttpStatus.OK);
     }
+
+    @PostMapping("status/{status}")
+    public ResponseEntity<Iterable<Post>> findAllByStatus(@PathVariable Long status) {
+        return new ResponseEntity<>(postService.findAllByStatus(status), HttpStatus.OK);
+    }
+
+    @PostMapping("userAndStatus/{userId}/{status}")
+    public ResponseEntity<Iterable<Post>> findAllByUserIdAndStatus(@PathVariable Long userId,@PathVariable Integer status) {
+        return new ResponseEntity<>(postService.findAllByUserIdAndStatus(userId, status), HttpStatus.OK);
+    }
+
+    @PostMapping("statusIn/{status}")
+    public ResponseEntity<Iterable<Post>> findAllByStatusIn(@PathVariable long[] status) {
+        return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
+    }
+
+    @GetMapping()
 
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return myDateObj.format(myFormatObj);
     }
 }
