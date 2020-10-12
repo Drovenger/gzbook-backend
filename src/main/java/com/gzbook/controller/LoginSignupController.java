@@ -123,6 +123,7 @@ public class LoginSignupController {
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(jwt);
         refreshTokenService.generateRefreshToken(refreshToken);
+        System.out.println(userDetails.getEmail() + userDetails.getPassword());
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),

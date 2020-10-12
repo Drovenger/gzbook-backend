@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     PasswordEncoder encoder;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<Iterable<User>> findAll() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }
