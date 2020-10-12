@@ -51,9 +51,10 @@ public class UserController {
         return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
     }
 
-    @GetMapping("findUserByEmail/{email}")
-    public ResponseEntity<User> findByName(@PathVariable String email) {
-        return new ResponseEntity<>(userService.findUserByEmail(email), HttpStatus.OK);
+    @GetMapping("findUserByEmail")
+    public ResponseEntity<User> findByEmail(@RequestParam("email") String email) {
+        User user = userService.findUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("findUserByName/{name}")
