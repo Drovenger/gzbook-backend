@@ -5,6 +5,7 @@ import com.gzbook.model.RefreshToken;
 import com.gzbook.model.payload.reponse.JwtResponse;
 import com.gzbook.model.payload.reponse.MessageResponse;
 import com.gzbook.model.payload.request.LoginRequest;
+import com.gzbook.model.payload.request.RefreshTokenRequest;
 import com.gzbook.model.payload.request.SignupRequest;
 import com.gzbook.model.user.ERole;
 import com.gzbook.model.user.Role;
@@ -69,7 +70,11 @@ public class LoginSignupController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(), signUpRequest.getGender(), signUpRequest.getEmail(), passwordEncoder.encode(signUpRequest.getPassword()));
+
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                passwordEncoder.encode(signUpRequest.getPassword()),
+                signUpRequest.getGender());
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -123,5 +128,11 @@ public class LoginSignupController {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+        refreshTokenService.deleteRefreshToken(refreshTokenRequest.getToken());
+        return ResponseEntity.ok(new MessageResponse("Refresh token delete successfully"));
     }
 }
