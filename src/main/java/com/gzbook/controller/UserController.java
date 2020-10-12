@@ -64,21 +64,22 @@ public class UserController {
     }
 
     @PostMapping("/combinePassword/{id}")
-    public ResponseEntity<HttpStatus> combinePassword(@PathVariable Long id, @RequestBody String password) {
+    public ResponseEntity<HttpStatus> combinePassword(@PathVariable Long id, @RequestParam("password") String password) {
         User user = this.userService.findUserById(id);
+//        String combinedPass = encoder.encode(password);
         if (encoder.matches(password, user.getPassword())) {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PostMapping("/changePassword/{id}")
-    public ResponseEntity<String> changePassword(@PathVariable Long id, @RequestBody String newPassword) {
-        User user = this.userService.findUserById(id);
-        user.setPassword(encoder.encode(newPassword));
-        this.userService.saveUser(user);
-        return new ResponseEntity<>("Password changed", HttpStatus.OK);
-    }
+//    @PostMapping("/changePassword/{id}")
+//    public ResponseEntity<String> changePassword(@PathVariable Long id, @RequestBody String newPassword) {
+//        User user = this.userService.findUserById(id);
+//        user.setPassword(encoder.encode(newPassword));
+//        this.userService.saveUser(user);
+//        return new ResponseEntity<>("Password changed", HttpStatus.OK);
+//    }
 
     @PostMapping("/exists")
     public ResponseEntity<Boolean> checkUserExist(@RequestBody String email) {
