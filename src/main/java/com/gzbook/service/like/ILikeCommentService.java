@@ -3,9 +3,11 @@ package com.gzbook.service.like;
 import com.gzbook.model.like.LikeComment;
 import com.gzbook.model.like.LikePost;
 
+import java.util.List;
+
 public interface ILikeCommentService {
-    void create(LikeComment like);
-    void delete(LikeComment like);
+    int create(LikeComment like);
+    void delete(long likeId);
     LikeComment checkLike(long commentId, long userId);
-    int countLikeComment(long commentId);
+    List likeComment(long commentId);
 }

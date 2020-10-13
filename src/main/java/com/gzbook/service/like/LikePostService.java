@@ -5,27 +5,33 @@ import com.gzbook.repository.LikePostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LikePostService implements ILikePostService{
     @Autowired
     private LikePostRepository likePostRepository;
     @Override
-    public void create(LikePost like) {
-        likePostRepository.save(like);
+    public int create(LikePost like) {
+        if (likePostRepository.findByPostIdAndUserId(like.getUserId(),like.getUserId()) == null) {
+            likePostRepository.save(like);
+            return 1;
+        }
+        return 0;
     }
 
     @Override
-    public void delete(LikePost like) {
-        likePostRepository.delete(like);
+    public void delete(long likeId) {
+        likePostRepository.deleteById(likeId);
     }
 
     @Override
     public LikePost checkLike(long postId, long userId) {
-       return likePostRepository.findByPostIdAndUserId(postId, userId).get();
+       return likePostRepository.findByPostIdAndUserId(postId, userId).orElse(null);
     }
 
     @Override
-    public int countLikePost(long postId) {
-        return likePostRepository.countByPostId(postId);
+    public List<LikePost> likePost(long postId) {
+        return (List<LikePost>) likePostRepository.findAllByPostId(postId);
     }
 }

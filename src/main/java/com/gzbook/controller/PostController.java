@@ -1,7 +1,9 @@
 package com.gzbook.controller;
 
+import com.gzbook.model.like.LikePost;
 import com.gzbook.model.post.Post;
 import com.gzbook.model.user.User;
+import com.gzbook.service.like.ILikePostService;
 import com.gzbook.service.post.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -12,12 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/post")
 public class PostController {
     @Autowired
     private IPostService postService;
+
+    @Autowired
+    private ILikePostService likePostService;
 
     @GetMapping("/")
     public ResponseEntity<Iterable<Post>> findAllPost() {
@@ -68,7 +74,22 @@ public class PostController {
         return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/like")
+    public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
+        return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
+    }
+
+    @GetMapping("/dislike/{likePostId}")
+    public ResponseEntity<Integer> dislikePost(@PathVariable long likePostId){
+        likePostService.delete(likePostId);
+        return new ResponseEntity<>(-1,HttpStatus.OK);
+    }
+
+    @GetMapping("/likes/{postId}")
+    public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
+        List likePost = likePostService.likePost(postId);
+        return new ResponseEntity<>(likePost,HttpStatus.OK);
+    }
 
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();

@@ -2,9 +2,11 @@ package com.gzbook.service.like;
 
 import com.gzbook.model.like.LikePost;
 
+import java.util.List;
+
 public interface ILikePostService {
-    void create(LikePost like);
-    void delete(LikePost like);
+    int create(LikePost like);
+    void delete(long likeId);
     LikePost checkLike(long postId, long userId);
-    int countLikePost(long postId);
+    List likePost(long postId);
 }
