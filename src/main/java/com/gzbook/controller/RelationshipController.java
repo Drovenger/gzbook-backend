@@ -40,9 +40,10 @@ public class RelationshipController {
             Status status = statusService.findStatusById(1L);
             relationship1.setStatus(status);
             relationshipService.saveRelationship(relationship1);
-        }else {relationship.setStatus(statusService.findStatusById(1l));
-            relationshipService.saveRelationship(relationship);
         }
+//        else {relationship.setStatus(statusService.findStatusById(1l));
+//            relationshipService.saveRelationship(relationship);
+//        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -53,6 +54,13 @@ public class RelationshipController {
       relationship.setStatus(statusService.findStatusById(statusId));
       return new ResponseEntity<>(relationshipService.saveRelationship(relationship), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{relationshipId}")
+    public ResponseEntity<Relationship> deleteInviteFriend2(@PathVariable Long relationshipId){
+        relationshipService.deleteRelationship(relationshipId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
     @PutMapping("/unfriend/{relatedId}/{statusId}")
     public ResponseEntity<Relationship> unFriend(@PathVariable Long relatedId, @PathVariable Long statusId, @RequestBody User user){
