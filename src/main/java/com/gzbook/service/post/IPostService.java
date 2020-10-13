@@ -17,5 +17,5 @@ public interface IPostService {
 
     Iterable<Post> findAllByUserIdAndStatus(long id, int status);
 
-    Iterable<Post> findAllByStatusIn(long[] status);
+    Iterable<Post> findAllByStatusIn(int status);
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostService implements IPostService {
     @Autowired
@@ -43,8 +45,16 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public Iterable<Post> findAllByStatusIn(long[] status){
-        return postRepository.findAllByStatusIn(status);
+    public Iterable<Post> findAllByStatusIn(int status){
+        long[] i;
+        switch (status){
+            case 1:
+                i = new long[]{1l, 2l};
+                break;
+            default:
+                i= new long[] {2l};
+        }
+        return postRepository.findAllByStatusIn(i);
     }
     @Override
     public Iterable<Post> findAllByUserIdAndStatus(long id, int status) {

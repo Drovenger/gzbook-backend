@@ -64,7 +64,7 @@ public class PostController {
     }
 
     @PostMapping("statusIn/{status}")
-    public ResponseEntity<Iterable<Post>> findAllByStatusIn(@PathVariable long[] status) {
+    public ResponseEntity<Iterable<Post>> findAllByStatusIn(@PathVariable int status) {
         return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
