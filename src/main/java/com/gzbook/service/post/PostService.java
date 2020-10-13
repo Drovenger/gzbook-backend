@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostService implements IPostService{
+public class PostService implements IPostService {
     @Autowired
     private PostRepository postRepository;
 
@@ -28,14 +28,26 @@ public class PostService implements IPostService{
     }
 
     @Override
-    public Iterable<Post> findAllPost(){return postRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));}
-
-    @Override
-    public Iterable<Post> findPostByUserId(Long userId){return postRepository.findByUserId(userId);}
-
-    @Override
-    public Iterable<Post> findByUserIdAndTextPostContains(Long id, String textPost) {
-        return postRepository.findByUserIdAndTextPostContains(id,textPost);
+    public Iterable<Post> findAllPost() {
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
+    @Override
+    public Iterable<Post> findAllByUserId(Long id) {
+        return postRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatus(long status) {
+        return postRepository.findAllByStatus(status);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatusIn(long[] status){
+        return postRepository.findAllByStatusIn(status);
+    }
+    @Override
+    public Iterable<Post> findAllByUserIdAndStatus(long id, int status) {
+        return postRepository.findAllByUserIdAndStatus(id, status);
+    }
 }

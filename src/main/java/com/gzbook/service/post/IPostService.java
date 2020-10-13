@@ -11,7 +11,11 @@ public interface IPostService {
 
     Iterable<Post> findAllPost();
 
-    Iterable<Post> findPostByUserId(Long userId);
+    Iterable<Post> findAllByUserId(Long userId);
 
-    Iterable<Post> findByUserIdAndTextPostContains(Long id, String textPost);
+    Iterable<Post> findAllByStatus(long status);
+
+    Iterable<Post> findAllByUserIdAndStatus(long id, int status);
+
+    Iterable<Post> findAllByStatusIn(long[] status);
 }

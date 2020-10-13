@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Controller
 @RequestMapping("/comment")
@@ -53,6 +54,12 @@ public class CommentController {
     @GetMapping("findCommentsByCommenterId/{commenterId}")
     public ResponseEntity<Iterable<Comment>> findCommentsByCommenterId(@PathVariable Long commenterId) {
         return new ResponseEntity<>(commentService.findCommentById(commenterId), HttpStatus.OK);
+    }
+
+    @GetMapping("count/{id}")
+    public ResponseEntity<Integer> countCommenterId(@PathVariable Long id) {
+        List<Comment> list = (List<Comment>) commentService.findCommentsByPostId(id);
+        return new ResponseEntity<>(list.size(), HttpStatus.OK);
     }
 
     private String timeConvert() {
