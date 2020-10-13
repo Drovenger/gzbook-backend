@@ -33,7 +33,21 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public Iterable<Post> findPostByPosterId(Long id) {
-        return postRepository.findByUserId(id);
+    public Iterable<Post> findAllByUserId(Long id) {
+        return postRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatus(long status) {
+        return postRepository.findAllByStatus(status);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatusIn(long[] status){
+        return postRepository.findAllByStatusIn(status);
+    }
+    @Override
+    public Iterable<Post> findAllByUserIdAndStatus(long id, int status) {
+        return postRepository.findAllByUserIdAndStatus(id, status);
     }
 }
