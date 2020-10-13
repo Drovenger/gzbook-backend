@@ -84,9 +84,9 @@ public class RelationshipController {
 
         return new ResponseEntity<Iterable<User>>(users, HttpStatus.OK);
     }
-    @GetMapping("/listPending/{userId}")
-    public ResponseEntity<Iterable<User>> findPending(@PathVariable Long userId){
-        Iterable<Relationship> relationships = relationshipService.findAllByRelatedUserIdAndStatus(userId,statusService.findStatusById(1L));
+    @GetMapping("/listPending/{relatedUserId}")
+    public ResponseEntity<Iterable<User>> findPending(@PathVariable Long relatedUserId){
+        Iterable<Relationship> relationships = relationshipService.findAllByRelatedUserIdAndStatus(relatedUserId,statusService.findStatusById(1L));
 
         List<User> users = new ArrayList<>();
         for (Relationship relationship:relationships
@@ -96,6 +96,7 @@ public class RelationshipController {
 
         return new ResponseEntity<Iterable<User>>(users, HttpStatus.OK);
     }
+
     @GetMapping("/checkFriend/{relatingId}/{relatedId}")
     public ResponseEntity<Long> checkFriend(@PathVariable Long relatingId, @PathVariable Long relatedId){
         Long status;
