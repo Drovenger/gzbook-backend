@@ -74,12 +74,6 @@ public class CommentController {
         return new ResponseEntity<>(likeCommentService.create(likePost),HttpStatus.OK);
     }
 
-    @GetMapping("/dislike/{likePostId}")
-    public ResponseEntity<Integer> dislikePost(@PathVariable long likePostId){
-        likeCommentService.delete(likePostId);
-        return new ResponseEntity<>(-1,HttpStatus.OK);
-    }
-
     @GetMapping("/likes/{commentId}")
     public ResponseEntity<List<LikeComment>> likePostCount(@PathVariable long commentId){
         List listComment = likeCommentService.likeComment(commentId);

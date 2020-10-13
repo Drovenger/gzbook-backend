@@ -14,16 +14,15 @@ public class LikeCommentService implements ILikeCommentService{
 
     @Override
     public int create(LikeComment like) {
-        if (this.checkLike(like.getCommentId(), like.getUserId()) == null){
+        LikeComment temp =
+                likeCommentRepository.findByCommentIdAndUserId(like.getCommentId(), like.getUserId()).orElse(null);
+        if (temp == null){
             likeCommentRepository.save(like);
             return 1;
+        }else {
+            likeCommentRepository.deleteById(temp.getId());
         }
-        return 0;
-    }
-
-    @Override
-    public void delete(long likeId) {
-        likeCommentRepository.deleteById(likeId);
+        return -1;
     }
 
     @Override

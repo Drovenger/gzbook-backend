@@ -13,16 +13,14 @@ public class LikePostService implements ILikePostService{
     private LikePostRepository likePostRepository;
     @Override
     public int create(LikePost like) {
-        if (likePostRepository.findByPostIdAndUserId(like.getUserId(),like.getUserId()) == null) {
+        LikePost temp = likePostRepository.findByPostIdAndUserId(like.getUserId(),like.getUserId()).orElse(null);
+        if (temp == null) {
             likePostRepository.save(like);
             return 1;
+        }else {
+            likePostRepository.deleteById(temp.getId());
         }
-        return 0;
-    }
-
-    @Override
-    public void delete(long likeId) {
-        likePostRepository.deleteById(likeId);
+        return -1;
     }
 
     @Override

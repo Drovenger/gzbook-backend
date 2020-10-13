@@ -79,12 +79,6 @@ public class PostController {
         return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
     }
 
-    @GetMapping("/dislike/{likePostId}")
-    public ResponseEntity<Integer> dislikePost(@PathVariable long likePostId){
-        likePostService.delete(likePostId);
-        return new ResponseEntity<>(-1,HttpStatus.OK);
-    }
-
     @GetMapping("/likes/{postId}")
     public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
         List likePost = likePostService.likePost(postId);
