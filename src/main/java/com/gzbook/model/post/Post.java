@@ -27,6 +27,8 @@ public class Post {
 
     private int postDislike;
 
+    private String photo;
+
     public Post() {
     }
 
@@ -130,5 +132,13 @@ public class Post {
 
     public void setPostDislike(int postDislike) {
         this.postDislike = postDislike;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
