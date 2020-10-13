@@ -16,7 +16,7 @@ public class UserService implements IUserService{
     @Override
     public User saveUser(User user) {
         userRepository.save(user);
-        return userRepository.findById(user.getId()).get();
+        return user;
     }
 
     @Override
@@ -36,7 +36,9 @@ public class UserService implements IUserService{
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email);
+        User user = userRepository.findByEmail(email).get();
+        user.setPassword("mơ đi mà lấy");
+        return user  ;
     }
 
     @Override

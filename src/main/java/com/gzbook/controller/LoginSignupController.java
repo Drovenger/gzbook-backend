@@ -57,11 +57,11 @@ public class LoginSignupController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
-        }
+//        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: Username is already taken!"));
+//        }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
@@ -72,9 +72,9 @@ public class LoginSignupController {
         // Create new user's account
 
         User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getGender(),
                 signUpRequest.getEmail(),
-                passwordEncoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getGender());
+                passwordEncoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -123,6 +123,7 @@ public class LoginSignupController {
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(jwt);
         refreshTokenService.generateRefreshToken(refreshToken);
+        System.out.println(userDetails.getEmail() + userDetails.getPassword());
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
