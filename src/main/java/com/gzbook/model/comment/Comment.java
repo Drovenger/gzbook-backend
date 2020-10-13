@@ -15,10 +15,6 @@ public class Comment {
 
     private String content;
 
-    private int commentLike;
-
-    private int commentDislike;
-
     private String commentTime;
 
     private int edited;
@@ -26,13 +22,11 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long commentId, Long commenterId, Long postId, String content, int commentLike, int commentDislike, String commentTime, int edited) {
-        this.id = commentId;
-        this.userId = commenterId;
+    public Comment(Long id, Long userId, Long postId, String content, String commentTime, int edited) {
+        this.id = id;
+        this.userId = userId;
         this.postId = postId;
         this.content = content;
-        this.commentLike = commentLike;
-        this.commentDislike = commentDislike;
         this.commentTime = commentTime;
         this.edited = edited;
     }
@@ -67,22 +61,6 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public int getCommentLike() {
-        return commentLike;
-    }
-
-    public void setCommentLike(int commentLike) {
-        this.commentLike = commentLike;
-    }
-
-    public int getCommentDislike() {
-        return commentDislike;
-    }
-
-    public void setCommentDislike(int commentDislike) {
-        this.commentDislike = commentDislike;
     }
 
     public String getCommentTime() {

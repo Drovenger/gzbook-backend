@@ -24,9 +24,8 @@ public class CommentController {
         return new ResponseEntity<>(commentService.saveComment(comment), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody Comment comment) {
-        comment.setId(id);
+    @PutMapping("/update")
+    public ResponseEntity<Comment> updateComment(@RequestBody Comment comment) {
         return new ResponseEntity<>(commentService.saveComment(comment), HttpStatus.OK);
     }
 
@@ -34,11 +33,6 @@ public class CommentController {
     public ResponseEntity<HttpStatus> deleteComment(@PathVariable Long id) {
         commentService.deleteComment(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<Iterable<Comment>> findAllComment() {
-        return new ResponseEntity<>(commentService.findAllComment(), HttpStatus.OK);
     }
 
     @GetMapping("findCommentById/{commentId}")
@@ -51,7 +45,7 @@ public class CommentController {
         return new ResponseEntity<>(commentService.findCommentsByPostId(postId), HttpStatus.OK);
     }
 
-    @GetMapping("findCommentsByCommenterId/{commenterId}")
+    @GetMapping("findByUserId/{commenterId}")
     public ResponseEntity<Iterable<Comment>> findCommentsByCommenterId(@PathVariable Long commenterId) {
         return new ResponseEntity<>(commentService.findCommentById(commenterId), HttpStatus.OK);
     }
