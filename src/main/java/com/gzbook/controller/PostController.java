@@ -44,10 +44,9 @@ public class PostController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<User> deletePost(@RequestBody Post post, @PathVariable Long id) {
-        postService.savePost(post);
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+    public ResponseEntity<User> deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("findPostByPosterId/{posterId}")
