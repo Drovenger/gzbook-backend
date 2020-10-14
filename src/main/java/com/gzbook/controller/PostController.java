@@ -85,6 +85,12 @@ public class PostController {
         return new ResponseEntity<>(likePost,HttpStatus.OK);
     }
 
+    @GetMapping("/checkLike/{postId}/{userId}")
+    public ResponseEntity<Boolean> checkLike(@PathVariable long postId, @PathVariable long userId){
+        Boolean isCheck = likePostService.checkLike(postId,userId) == null?false:true;
+        return new ResponseEntity<>(isCheck,HttpStatus.OK);
+    }
+
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
