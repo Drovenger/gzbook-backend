@@ -37,7 +37,7 @@ public class PostService implements IPostService {
 
     @Override
     public Iterable<Post> findAllByUserId(Long id) {
-        return postRepository.findAllByUserId(id);
+        return postRepository.findAllByUserIdOrderByCreatedTimeDesc(id);
     }
 
     @Override
