@@ -74,7 +74,7 @@ public class PostController {
         return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
-    @GetMapping("/like")
+    @PostMapping("/like")
     public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
         return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
     }
