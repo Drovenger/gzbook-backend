@@ -97,8 +97,8 @@ public class LoginSignupController {
             });
         }
 
-        user.setAvatarUrl("https://firebasestorage.googleapis.com/v0/b/porject-module6-vh2.appspot.com/o/wp3313545%20-%20Copy.jpg?alt=media&token=f870ab79-247d-4b39-88c6-454fb39557f1");
-        user.setCoverPhotoUrl("https://firebasestorage.googleapis.com/v0/b/porject-module6-vh2.appspot.com/o/wp3313545.jpg?alt=media&token=353b7206-321a-4eee-b845-36015a19c37e");
+        user.setAvatarUrl("https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/13151393_1028491123886019_3565676519142477926_n.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=OlsLZgslty4AX_KSiaj&_nc_ht=scontent.fhan3-3.fna&oh=2d8961b520b541b530feb0a1b58b8d2b&oe=5FAD95AF");
+        user.setCoverPhotoUrl("https://media.doisongvietnam.vn/u/rootimage/editor/2020/08/07/23/11/w825/8cc1596795067_5299.jpg");
         user.setDateOfBirth("--");
         user.setRoles(roles);
         userRepository.save(user);
