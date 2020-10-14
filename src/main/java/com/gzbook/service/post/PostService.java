@@ -52,14 +52,7 @@ public class PostService implements IPostService {
 
     @Override
     public List<Post> searchContent(long userId, String content) {
-        List<Post> listPost = (List<Post>) postRepository.findAllByUserId(userId);
-        List<Post> temp = new ArrayList<>();
-        for (Post i : listPost){
-            if (i.getTextPost().contains(content)){
-                temp.add(i);
-            }
-        }
-        return temp;
+        return (List<Post>) postRepository.findAllByUserIdAndTextPostContaining(userId, content);
     }
 
     @Override
