@@ -16,7 +16,7 @@ public interface IUserService {
 
     User findUserByEmail(String email);
 
-    Iterable<User> findUserByName(String input);
+    Iterable<User> findUserByName(String name, Long idLogin);
 
     Optional<User> findByUserName(String userName);
 
