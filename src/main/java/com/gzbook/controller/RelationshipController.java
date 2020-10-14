@@ -99,7 +99,7 @@ public class RelationshipController {
     }
 
     @GetMapping("/mutualFriends/{userId}/{friendId}")
-    public ResponseEntity<List<Relationship>> mutualFriends(@PathVariable Long userId, @PathVariable Long friendId) {
+    public ResponseEntity<List<User>> mutualFriends(@PathVariable Long userId, @PathVariable Long friendId) {
         return new ResponseEntity<>(relationshipService.mutualFriends(userId, friendId), HttpStatus.OK);
     }
 
