@@ -1,7 +1,11 @@
 package com.gzbook.controller;
 
 import com.gzbook.model.comment.Comment;
+import com.gzbook.model.like.LikeComment;
+import com.gzbook.model.like.LikePost;
 import com.gzbook.service.comment.ICommentService;
+import com.gzbook.service.like.ILikeCommentService;
+import com.gzbook.service.like.ILikePostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +21,9 @@ import java.util.List;
 public class CommentController {
     @Autowired
     private ICommentService commentService;
+
+    @Autowired
+    private ILikeCommentService likeCommentService;
 
     @PostMapping("/create")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
@@ -60,6 +67,17 @@ public class CommentController {
     public ResponseEntity<Integer> countCommenterId(@PathVariable Long id) {
         List<Comment> list = (List<Comment>) commentService.findCommentsByPostId(id);
         return new ResponseEntity<>(list.size(), HttpStatus.OK);
+    }
+
+    @GetMapping("/like")
+    public ResponseEntity<Integer> likePost(@RequestBody LikeComment likePost){
+        return new ResponseEntity<>(likeCommentService.create(likePost),HttpStatus.OK);
+    }
+
+    @GetMapping("/likes/{commentId}")
+    public ResponseEntity<List<LikeComment>> likePostCount(@PathVariable long commentId){
+        List listComment = likeCommentService.likeComment(commentId);
+        return new ResponseEntity<>(listComment,HttpStatus.OK);
     }
 
     private String timeConvert() {
