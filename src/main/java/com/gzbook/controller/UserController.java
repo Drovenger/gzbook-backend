@@ -2,6 +2,7 @@ package com.gzbook.controller;
 
 import com.gzbook.model.user.User;
 import com.gzbook.service.user.IUserService;
+import com.gzbook.service.user.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -59,8 +60,9 @@ public class UserController {
     }
 
     @GetMapping("/findUserByName")
-    public ResponseEntity<Iterable<User>> findByNameContains(@RequestParam("name") String name) {
-        return new ResponseEntity<>(userService.findUserByName(name), HttpStatus.OK);
+    public ResponseEntity<Iterable<User>> findByNameContains(@RequestParam("name") String name,@RequestParam("idLogin") Long idLogin) {
+
+        return new ResponseEntity<>(userService.findUserByName(name,idLogin), HttpStatus.OK);
     }
 
     @PostMapping("/combinePassword/{id}")
