@@ -91,6 +91,11 @@ public class PostController {
         return new ResponseEntity<>(isCheck,HttpStatus.OK);
     }
 
+    @GetMapping("/search/{userId}")
+    public ResponseEntity<List<Post>> searchPost(@PathVariable long userId, @RequestBody String content){
+        return new ResponseEntity<>(postService.searchContent(userId, content),HttpStatus.OK);
+    }
+
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");

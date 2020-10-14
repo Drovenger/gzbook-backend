@@ -2,14 +2,24 @@ package com.gzbook.service.relationship;
 
 import com.gzbook.model.friend.Relationship;
 import com.gzbook.model.friend.Status;
+import com.gzbook.model.user.User;
 import com.gzbook.repository.IRelationshipRepository;
+import com.gzbook.service.status.IStatusService;
+import com.gzbook.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RelationshipService implements IRelationshipService {
     @Autowired
     private IRelationshipRepository iRelationshipRepository;
+    @Autowired
+    private IStatusService statusService;
+    @Autowired
+    private IUserService userService;
     @Override
     public Relationship saveRelationship(Relationship relationship) {
         return iRelationshipRepository.save(relationship);
@@ -48,6 +58,26 @@ public class RelationshipService implements IRelationshipService {
     @Override
     public Iterable<Relationship> findAllByRelatingUserIdAndStatusOrRelatedUserIdAndStatus(Long relatingUserId, Status status1, Long relatedUserId, Status status2) {
         return iRelationshipRepository.findAllByRelatingUserIdAndStatusOrRelatedUserIdAndStatus(relatingUserId,status1,relatedUserId,status2);
+    }
+
+    public List<User> mutualFriends(Long userId, Long friendId){
+        List<User> temp = new ArrayList<>();
+        List<Relationship> listFriendOfUser =
+                (List<Relationship>) this.findAllByRelatedUserIdAndStatus(userId, statusService.findStatusById(2l));
+        List<Relationship> listFriendOfFriend =
+                (List<Relationship>) this.findAllByRelatedUserIdAndStatus(friendId, statusService.findStatusById(2l));
+        for (Relationship i : listFriendOfUser){
+            for (Relationship j : listFriendOfFriend){
+                if (i.getRelatingUserId() == j.getRelatingUserId()){
+                    User user = userService.findUserById(i.getRelatingUserId());
+                    if (user != null){
+                        user.setPassword("00000000000000000");
+                        temp.add(user);
+                    }
+                }
+            }
+        }
+        return temp;
     }
 
 

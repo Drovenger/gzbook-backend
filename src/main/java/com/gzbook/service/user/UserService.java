@@ -42,8 +42,8 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Iterable<User> findUserByName(String input) {
-        return userRepository.findUsersByUsernameContaining(input);
+    public Iterable<User> findUserByName(String name, Long idLogin) {
+        return userRepository.findAllByUsernameContainingAndIdNot(name,idLogin);
     }
 
     @Override

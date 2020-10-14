@@ -98,6 +98,11 @@ public class RelationshipController {
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
+    @GetMapping("/mutualFriends/{userId}/{friendId}")
+    public ResponseEntity<List<User>> mutualFriends(@PathVariable Long userId, @PathVariable Long friendId) {
+        return new ResponseEntity<>(relationshipService.mutualFriends(userId, friendId), HttpStatus.OK);
+    }
+
     public Relationship checkRelationship(Long relatingId, Long relatedId){
         Relationship relationship ;
         if (relationshipService.findRelationshipByRelatingUserIdAndRelatedUserId(relatingId,relatedId)!=null){
