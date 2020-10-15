@@ -10,26 +10,30 @@ import java.util.List;
 @Service
 public class LikePostService implements ILikePostService{
     @Autowired
-    private LikePostRepository likePostRepository;
+    LikePostRepository likePostRepository;
+
     @Override
-    public int create(LikePost like) {
-        LikePost temp = likePostRepository.findByPostIdAndUserId(like.getUserId(),like.getUserId()).orElse(null);
-        if (temp == null) {
-            likePostRepository.save(like);
-            return 1;
-        }else {
-            likePostRepository.deleteById(temp.getId());
-        }
-        return -1;
+    public LikePost saveLikePost(LikePost LikePost) {
+        return likePostRepository.save(LikePost);
     }
 
     @Override
-    public LikePost checkLike(long postId, long userId) {
-       return likePostRepository.findByPostIdAndUserId(postId, userId).orElse(null);
+    public void deleteLikePost(Long id) {
+        likePostRepository.deleteById(id);
     }
 
     @Override
-    public List<LikePost> likePost(long postId) {
-        return (List<LikePost>) likePostRepository.findAllByPostId(postId);
+    public Iterable<LikePost> findAllLikePost() {
+        return likePostRepository.findAll();
+    }
+
+    @Override
+    public LikePost findLikePostById(Long id) {
+        return likePostRepository.getOne(id);
+    }
+
+    @Override
+    public Iterable<LikePost> findLikePostByPostId(Long postId) {
+        return likePostRepository.findLikePostsByPostId(postId);
     }
 }

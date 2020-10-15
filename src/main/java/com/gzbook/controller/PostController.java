@@ -74,16 +74,16 @@ public class PostController {
         return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
-    @GetMapping("/like")
-    public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
-        return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
-    }
-
-    @GetMapping("/likes/{postId}")
-    public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
-        List likePost = likePostService.likePost(postId);
-        return new ResponseEntity<>(likePost,HttpStatus.OK);
-    }
+//    @PostMapping("/like")
+//    public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
+//        return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/likes/{postId}")
+//    public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
+//        List likePost = likePostService.likePost(postId);
+//        return new ResponseEntity<>(likePost,HttpStatus.OK);
+//    }
 
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
