@@ -69,16 +69,22 @@ public class CommentController {
         return new ResponseEntity<>(list.size(), HttpStatus.OK);
     }
 
-//    @PostMapping("/like")
-//    public ResponseEntity<Integer> likePost(@RequestBody LikeComment likePost){
-//        return new ResponseEntity<>(likeCommentService.create(likePost),HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/likes/{commentId}")
-//    public ResponseEntity<List<LikeComment>> likePostCount(@PathVariable long commentId){
-//        List listComment = likeCommentService.likeComment(commentId);
-//        return new ResponseEntity<>(listComment,HttpStatus.OK);
-//    }
+    @PostMapping("/like")
+    public ResponseEntity<Integer> likePost(@RequestBody LikeComment likePost){
+        return new ResponseEntity<>(likeCommentService.create(likePost),HttpStatus.OK);
+    }
+
+    @GetMapping("/likes/{commentId}")
+    public ResponseEntity<List<LikeComment>> likePostCount(@PathVariable long commentId){
+        List listComment = likeCommentService.likeComment(commentId);
+        return new ResponseEntity<>(listComment,HttpStatus.OK);
+    }
+
+    @GetMapping("/checkLike/{commentId}/{userId}")
+    public ResponseEntity<Boolean> checkLike(@PathVariable long commentId, @PathVariable long userId){
+        Boolean isCheck = likeCommentService.checkLike(commentId,userId) == null?false:true;
+        return new ResponseEntity<>(isCheck,HttpStatus.OK);
+    }
 
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
