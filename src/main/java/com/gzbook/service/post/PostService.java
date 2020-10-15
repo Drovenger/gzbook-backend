@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PostService implements IPostService {
     @Autowired
@@ -33,7 +36,27 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public Iterable<Post> findPostByPosterId(Long id) {
-        return postRepository.findByUserId(id);
+    public Iterable<Post> findAllByUserId(Long id) {
+        return postRepository.findAllByUserIdOrderByCreatedTimeDesc(id);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatus(long status) {
+        return postRepository.findAllByStatus(status);
+    }
+
+    @Override
+    public Iterable<Post> findAllByStatusIn(long[] status){
+        return postRepository.findAllByStatusIn(status);
+    }
+
+    @Override
+    public List<Post> searchContent(long userId, String content) {
+        return (List<Post>) postRepository.findAllByUserIdAndTextPostContaining(userId, content);
+    }
+
+    @Override
+    public Iterable<Post> findAllByUserIdAndStatus(long id, int status) {
+        return postRepository.findAllByUserIdAndStatus(id, status);
     }
 }

@@ -41,11 +41,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, String gender) {
+    public User(String username, String gender, String email, String password) {
         this.username = username;
+        this.gender = gender;
         this.email = email;
         this.password = password;
-        this.gender = gender;
+
     }
 
     public User(Long id, String username, String email, String password, String gender, String dateOfBirth, String address, String phoneNumber, String avatarUrl, String coverPhotoUrl, Set<Role> roles) {

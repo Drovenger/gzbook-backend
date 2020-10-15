@@ -11,15 +11,15 @@ public class LikeComment {
 
     private Long commentId;
 
-    private Long likerId;
+    private Long userId;
 
     public LikeComment() {
     }
 
-    public LikeComment(Long id, Long commentId, Long likerId) {
+    public LikeComment(Long id, Long commentId, Long userId) {
         this.id = id;
         this.commentId = commentId;
-        this.likerId = likerId;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -34,15 +34,15 @@ public class LikeComment {
         return commentId;
     }
 
-    public void setCommentId(Long commenterId) {
-        this.commentId = commenterId;
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
     }
 
-    public Long getLikerId() {
-        return likerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setLikerId(Long likerId) {
-        this.likerId = likerId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

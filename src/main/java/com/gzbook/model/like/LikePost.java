@@ -11,15 +11,15 @@ public class LikePost {
 
     private Long postId;
 
-    private Long likerId;
+    private Long userId;
 
     public LikePost() {
     }
 
-    public LikePost(Long id,Long postId, Long likerId) {
+    public LikePost(Long id,Long postId, Long userId) {
         this.id = id;
         this.postId = postId;
-        this.likerId = likerId;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -38,11 +38,11 @@ public class LikePost {
         this.postId = postId;
     }
 
-    public Long getLikerId() {
-        return likerId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setLikerId(Long likerId) {
-        this.likerId = likerId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
