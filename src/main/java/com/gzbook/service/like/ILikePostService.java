@@ -5,7 +5,13 @@ import com.gzbook.model.like.LikePost;
 import java.util.List;
 
 public interface ILikePostService {
-    int create(LikePost like);
-    LikePost checkLike(long postId, long userId);
-    List likePost(long postId);
+    LikePost saveLikePost(LikePost LikePost);
+
+    void deleteLikePost(Long id);
+
+    Iterable<LikePost> findAllLikePost();
+
+    LikePost findLikePostById(Long id);
+
+    Iterable<LikePost> findLikePostByPostId(Long postId);
 }

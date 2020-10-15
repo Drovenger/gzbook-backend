@@ -42,7 +42,7 @@ public class LikePost {
         return userId;
     }
 
-    public void setUserId(Long likerId) {
-        this.userId = likerId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
