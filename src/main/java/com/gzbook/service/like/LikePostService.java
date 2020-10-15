@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
-public class LikePostService implements ILikePostService{
+public class LikePostService implements ILikePostService {
     @Autowired
     private LikePostRepository likePostRepository;
     @Override
