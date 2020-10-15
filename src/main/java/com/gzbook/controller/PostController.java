@@ -91,8 +91,8 @@ public class PostController {
 //        return new ResponseEntity<>(isCheck,HttpStatus.OK);
 //    }
 
-    @PostMapping("/search/{userId}")
-    public ResponseEntity<List<Post>> searchPost(@PathVariable long userId, @RequestBody String content){
+    @GetMapping("/search/{userId}")
+    public ResponseEntity<List<Post>> searchPost(@PathVariable long userId, @RequestParam("text") String content){
         return new ResponseEntity<>(postService.searchContent(userId, content),HttpStatus.OK);
     }
 
