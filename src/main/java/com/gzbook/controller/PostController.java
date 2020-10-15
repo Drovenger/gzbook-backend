@@ -74,16 +74,27 @@ public class PostController {
         return new ResponseEntity<>(postService.findAllByStatusIn(status), HttpStatus.OK);
     }
 
-//    @PostMapping("/like")
-//    public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
-//        return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/likes/{postId}")
-//    public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
-//        List likePost = likePostService.likePost(postId);
-//        return new ResponseEntity<>(likePost,HttpStatus.OK);
-//    }
+    @PostMapping("/like")
+    public ResponseEntity<Integer> likePost(@RequestBody LikePost likePost){
+        return new ResponseEntity<>(likePostService.create(likePost),HttpStatus.OK);
+    }
+
+    @GetMapping("/likes/{postId}")
+    public ResponseEntity<List<LikePost>> likePostCount(@PathVariable long postId){
+        List likePost = likePostService.likePost(postId);
+        return new ResponseEntity<>(likePost,HttpStatus.OK);
+    }
+
+    @GetMapping("/checkLike/{postId}/{userId}")
+    public ResponseEntity<Boolean> checkLike(@PathVariable long postId, @PathVariable long userId){
+        Boolean isCheck = likePostService.checkLike(postId,userId) == null?false:true;
+        return new ResponseEntity<>(isCheck,HttpStatus.OK);
+    }
+
+    @PostMapping("/search/{userId}")
+    public ResponseEntity<List<Post>> searchPost(@PathVariable long userId, @RequestBody String content){
+        return new ResponseEntity<>(postService.searchContent(userId, content),HttpStatus.OK);
+    }
 
     private String timeConvert() {
         LocalDateTime myDateObj = LocalDateTime.now();
