@@ -60,26 +60,36 @@ public class RelationshipService implements IRelationshipService {
         return iRelationshipRepository.findAllByRelatingUserIdAndStatusOrRelatedUserIdAndStatus(relatingUserId,status1,relatedUserId,status2);
     }
 
-    public List<User> mutualFriends(Long userId, Long friendId){
+    public List<User> mutualFriends(Long userId, Long friendId) {
+        Iterable<Relationship> relationships1 = this.findAllByRelatingUserIdAndStatusOrRelatedUserIdAndStatus(userId, statusService.findStatusById(2L), userId, statusService.findStatusById(2L));
+
+        List<User> users1 = new ArrayList<>();
+        for (Relationship relationship : relationships1) {
+            if (relationship.getRelatingUserId().equals(userId)) {
+                users1.add(userService.findUserById(relationship.getRelatedUserId()));
+            } else users1.add(userService.findUserById(relationship.getRelatingUserId()));
+        }
+
+        Iterable<Relationship> relationships2 = this.findAllByRelatingUserIdAndStatusOrRelatedUserIdAndStatus(friendId, statusService.findStatusById(2L), friendId, statusService.findStatusById(2L));
+
+        List<User> users2 = new ArrayList<>();
+        for (Relationship relationship : relationships2) {
+            if (relationship.getRelatingUserId().equals(friendId)) {
+                users2.add(userService.findUserById(relationship.getRelatedUserId()));
+            } else users2.add(userService.findUserById(relationship.getRelatingUserId()));
+        }
+
         List<User> temp = new ArrayList<>();
-        List<Relationship> listFriendOfUser =
-                (List<Relationship>) this.findAllByRelatedUserIdAndStatus(userId, statusService.findStatusById(2l));
-        List<Relationship> listFriendOfFriend =
-                (List<Relationship>) this.findAllByRelatedUserIdAndStatus(friendId, statusService.findStatusById(2l));
-        for (Relationship i : listFriendOfUser){
-            for (Relationship j : listFriendOfFriend){
-                if (i.getRelatingUserId() == j.getRelatingUserId()){
-                    User user = userService.findUserById(i.getRelatingUserId());
-                    if (user != null){
-                        user.setPassword("00000000000000000");
-                        temp.add(user);
-                    }
+        for (User i : users1) {
+            for (User j : users2) {
+                if (i.getId() == j.getId()) {
+                    i.setPassword("00000000000000000");
+                    temp.add(i);
                 }
             }
         }
         return temp;
+
     }
-
-
 }
 
