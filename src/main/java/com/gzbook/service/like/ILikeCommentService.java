@@ -6,7 +6,13 @@ import com.gzbook.model.like.LikePost;
 import java.util.List;
 
 public interface ILikeCommentService {
-    int create(LikeComment like);
-    LikeComment checkLike(long commentId, long userId);
-    List likeComment(long commentId);
+    LikeComment saveLikeComment(LikeComment likeComment);
+
+    void deleteLikeComment(Long id);
+
+    Iterable<LikeComment> findAllLikeComment();
+
+    LikeComment findLikeCommentById(Long id);
+
+    Iterable<LikeComment> findLikeCommentsByCommentId(Long id);
 }
